@@ -1,0 +1,39 @@
+#top-line { 
+  position: absolute;
+  background: #404040 url('/assets/background.jpg') repeat-x left top;
+  left: 0; width: 100%;
+  height: 105px;
+  margin: 0;
+  padding: 0;
+
+  a,
+  a:link,
+  a:hover,
+  a:active,
+  a:visited {
+    color:#fef8e7;
+    text-decoration: none;
+  }
+}
+
+.top-bar-section { 
+  padding-left:20px; 
+  padding-right: 50px;
+  li { list-style-type: none; }
+}
+
+#footer-line { background: #505050 url('/assets/background.jpg') repeat-x bottom;
+  position: absolute; bottom: -150px;left:0; width:100%;
+  height: 130px;
+  margin-top: 30px;
+  padding: 0;
+
+  a,
+  a:link,
+  a:hover,
+  a:active,
+  a:visited {
+    color:#fef8e7;
+    text-decoration: none;
+  }
+}
