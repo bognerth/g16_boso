@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-G16Login::Application.load_tasks
+G16Boso::Application.load_tasks
