@@ -1,6 +1,7 @@
 class CompaniesController < ApplicationController
-  # GET /companies
-  # GET /companies.json
+
+  before_filter :authorize, except: [:index, :show]
+  
   def index
     @companies = Company.order(:title)
 

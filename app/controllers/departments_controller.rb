@@ -1,6 +1,7 @@
 class DepartmentsController < ApplicationController
-  # GET /departments
-  # GET /departments.json
+
+  before_filter :authorize
+
   def index
     @departments = Department.all
 
