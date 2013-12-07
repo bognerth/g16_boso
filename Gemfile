@@ -32,6 +32,8 @@ gem 'best_in_place'
 
 gem 'letter_opener'
 
+gem 'roo'
+
 gem 'bcrypt-ruby', '~> 3.0.0'
 
 

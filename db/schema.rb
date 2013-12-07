@@ -11,13 +11,57 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131102075856) do
+ActiveRecord::Schema.define(:version => 20131205152342) do
+
+  create_table "companies", :force => true do |t|
+    t.string   "title"
+    t.string   "street"
+    t.string   "plz"
+    t.string   "city"
+    t.string   "phone"
+    t.string   "fax"
+    t.string   "email"
+    t.integer  "department_id"
+    t.string   "appellation"
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "personal_phone"
+    t.string   "personal_fax"
+    t.string   "personal_email"
+    t.string   "position"
+    t.boolean  "interested"
+    t.boolean  "informed"
+    t.boolean  "cooperating"
+    t.boolean  "educates"
+    t.integer  "places"
+    t.integer  "azubis"
+    t.text     "comment"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  create_table "departments", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "pages", :force => true do |t|
     t.string   "header"
     t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "email"
+    t.string   "password_digest"
+    t.boolean  "admin"
+    t.boolean  "edit"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
 end

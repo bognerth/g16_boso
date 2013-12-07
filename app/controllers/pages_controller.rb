@@ -1,6 +1,5 @@
 class PagesController < ApplicationController
-  # GET /pages
-  # GET /pages.json
+  before_filter :authorize, only: [:edit, :update]
   def index
     @pages = Page.all
 
@@ -79,5 +78,9 @@ class PagesController < ApplicationController
       format.html { redirect_to pages_url }
       format.json { head :no_content }
     end
+  end
+
+  def authorize
+    redirect_to login_url, alert: "Not authorized" if current_user.nil?
   end
 end

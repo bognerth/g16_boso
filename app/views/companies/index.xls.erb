@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">ID</Data></Cell>
+        <Cell><Data ss:Type="String">Title</Data></Cell>
+        <Cell><Data ss:Type="String">Street</Data></Cell>
+        <Cell><Data ss:Type="String">Plz</Data></Cell>
+        <Cell><Data ss:Type="String">City</Data></Cell>
+        <Cell><Data ss:Type="String">Phone</Data></Cell>
+        <Cell><Data ss:Type="String">Fax</Data></Cell>
+        <Cell><Data ss:Type="String">Email</Data></Cell>
+        <Cell><Data ss:Type="String">Bereich</Data></Cell>
+        <Cell><Data ss:Type="String">Appellation</Data></Cell>
+        <Cell><Data ss:Type="String">Firstname</Data></Cell>
+        <Cell><Data ss:Type="String">Lastname</Data></Cell>
+        <Cell><Data ss:Type="String">Personal phone</Data></Cell>
+        <Cell><Data ss:Type="String">Personal fax</Data></Cell>
+        <Cell><Data ss:Type="String">Personal email</Data></Cell>
+        <Cell><Data ss:Type="String">Comment</Data></Cell>
+        <Cell><Data ss:Type="String">Interested</Data></Cell>
+        <Cell><Data ss:Type="String">Informed</Data></Cell>
+        <Cell><Data ss:Type="String">Cooperating</Data></Cell>
+        <Cell><Data ss:Type="String">Educates</Data></Cell>
+        <Cell><Data ss:Type="String">Places</Data></Cell>
+        <Cell><Data ss:Type="String">Azubis</Data></Cell>
+      </Row>
+    <% @companies.each do |company| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= company.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= company.title %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= company.street %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= company.plz %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= company.city %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= company.phone %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= company.fax %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= company.email %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= company.department.title %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= company.appellation %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= company.firstname %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= company.lastname %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= company.personal_phone %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= company.personal_fax %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= company.personal_email %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= company.interested %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= company.informed %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= company.cooperating %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= company.educates %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= company.places %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= company.azubis %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= company.comment %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

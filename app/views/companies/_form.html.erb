@@ -1,0 +1,163 @@
+<%= form_for(@company) do |f| %>
+  <% if @company.errors.any? %>
+    <div id="error_explanation">
+        <div class="row">
+          <div class="small-12 columns">
+            <div data-alert class="alert-box info radius">
+              <h3>Für eine Anmeldung müssen folgende Felder korrekt ausgefüllt werden:</h3>
+              <ul style='padding-left:30px;'>
+              <% @company.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div id="accordion">
+
+    <h5>Firmendaten</h5>
+    <div class="frame">
+      <div class="row">
+        <div class="small-12">
+           <div class="small-6 columns">
+            <%= f.label :title, 'Firmenname' %><br />
+            <%= f.text_field :title %>
+          </div>
+          <div class="small-6 columns">
+            <%= f.label :department_id, "Zuständigkeit, Fachbereich" %><br />
+            <%= f.collection_select :department_id, Department.all, :id, :title %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-12">
+          <div class="small-4 columns">
+            <%= f.label :fax, 'Fax' %><br />
+            <%= f.text_field :fax %>
+          </div>
+          <div class="small-4 columns">
+            <%= f.label :phone, 'Telefon' %><br />
+            <%= f.text_field :phone %>
+          </div>
+          <div class="small-4 columns">
+            <%= f.label :email, 'Email' %><br />
+            <%= f.email_field :email %>
+          </div>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="small-12">
+          <div class="small-6 columns">
+            <%= f.label :street, 'Strasse' %><br />
+            <%= f.text_field :street %>    
+          </div>
+          <div class="small-2 columns">
+            <%= f.label :plz %><br />
+            <%= f.text_field :plz %>
+          </div>
+          <div class="small-4 columns">
+            <%= f.label :city, 'Ort' %><br />
+            <%= f.text_field :city %>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <h5>Persönliche Daten</h5>
+    <div class="frame">
+
+      <div class="row">
+        <div class="small-12">
+          <div class="small-3 columns">
+            <%= f.label :appellation, 'Anrede' %><br />
+            <%= f.select :appellation, ["Frau", "Frau Dr.", "Herr", "Herr Dr."] %>
+          </div>
+          <div class="small-3 columns">
+            <%= f.label :firstname, 'Vorname' %><br />
+            <%= f.text_field :firstname %>
+          </div>
+          <div class="small-3 columns">
+            <%= f.label :lastname, 'Nachname' %><br />
+            <%= f.text_field :lastname %>
+          </div>
+          <div class="small-3 columns">
+            <%= f.label :position %><br />
+            <%= f.text_field :position %>    
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-12">
+          <div class="small-4 columns">
+            <%= f.label :personal_fax, 'Nationalität' %><br />
+            <%= f.text_field :personal_fax %>
+          </div>
+          <div class="small-4 columns">
+            <%= f.label :personal_phone, 'Telefon' %><br />
+            <%= f.text_field :personal_phone %>
+          </div>
+          <div class="small-4 columns">
+            <%= f.label :personal_email, 'Telefon' %><br />
+            <%= f.text_field :personal_email %>
+          </div>
+        </div>
+      </div>
+      </div>
+
+    <h5>Status</h5>
+    <div class="frame">
+
+      <div class="row">
+        <div class="small-12">
+          <div class="small-3 columns"> 
+            <%= f.check_box :interested %> Interessiert  
+          </div>
+          <div class="small-3 columns"> 
+            <%= f.check_box :informed %> Informiert  
+          </div>
+          <div class="small-3 columns"> 
+            <%= f.check_box :cooperating %> Kooperationsvertrag
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-12">
+          <div class="small-3 columns"> 
+            <%= f.check_box :educates %> Bildet aus  
+          </div>
+          <div class="small-3 columns"> 
+            <%= f.number_field :places %> Anzahl Plätze 
+          </div>
+          <div class="small-3 columns"> 
+            <%= f.number_field :azubis %> Anzahl Azubis
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h5>Anmerkungen</h5>
+    <div class="frame">
+
+      <div class="row">
+        <div class="small-12">
+          Kommentar<br />
+          <%= f.text_area :comment %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

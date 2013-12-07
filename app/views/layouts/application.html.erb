@@ -26,16 +26,44 @@
   <div class="row">
     <div class="large-12 columns">
       <div class="nav-bar right">
-       <ul class="button-group">
-         <li><a href="#" class="button">Link 1</a></li>
-         <li><a href="#" class="button">Link 2</a></li>
-         <li><a href="#" class="button">Link 3</a></li>
-         <li><a href="#" class="button">Link 4</a></li>
-        </ul>
+        <% if current_user %>
+          Logged in as <%= current_user.email %> | <%= link_to "Log Out", new_session_path %>
+        <% else %>
+          <%= link_to "Log In", new_session_path %>
+        <% end %>
       </div>
-      <h1><%= image_tag('g16_logo-green.png', :size => '280x100', title: "LOGIN - G16 Farmsen") %>
-        <small>LOGIN</small></h1>
-      <hr />
+      <h1><%= image_tag('g16_logo-green.png', :size => '280x100', title: "Höhere Technikschule - G16 Farmsen") %>
+        <small>Höhere Technikschule</small>
+      </h1>
+      <% unless current_user %>
+        <hr />
+      <% else %>
+        <nav class="top-bar" data-topbar>
+
+
+          <section class="top-bar-section">
+
+            <!-- Right Nav Section -->
+            <ul class="right">
+              <li><%= link_to 'Benutzerverwaltung', users_path %></li>
+              <li class="active"><%= link_to 'Fachbereiche', departments_path %></li>
+
+            </ul>
+
+            <!-- Left Nav Section -->
+            <ul class="left">
+              <li><%= link_to "Neuen Betrieb", new_company_path %></li>
+              <li><%= link_to "Alle Betriebe", companies_path %></li>
+              <li class="has-dropdown">
+                <a href="#">Filter</a>
+                <ul class="dropdown">
+                  <li><a href="#">Filter</a></li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+        </nav>
+      <% end %>
     </div>
   </div>
  
@@ -47,83 +75,17 @@
   <div class="row">
  
     <!-- Main Blog Content -->
-    <div class="large-9 columns" role="content">
+    <div class="large-12 columns" role="content">
  
-        <%= yield %>
+      <% if notice %><div class="alert-box success"><%= notice %><a href="#" class="close">&times;</a></div><% end %>
+      <% if alert %><div class="alert-box alert"><%= alert %><a href="#" class="close">&times;</a></div><% end %>
+      
+      <%= yield %>
     
-
-
-      <article>
- 
-        <h3><a href="#"></a></h3>
-        <h6>Written by <a href="#">John Smith</a> on August 12, 2012.</h6>
- 
-        <div class="row">
-          <div class="large-6 columns">
-            <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa.</p>
-            <p>Boudin aliqua adipisicing rump corned beef. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami.</p>
-          </div>
-          <div class="large-6 columns">
-            <img src="http://placehold.it/400x240&text=[img]" />
-          </div>
-        </div>
- 
-        <p>Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami.</p>
- 
-        <p>Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami.</p>
- 
-      </article>
- 
-      <hr />
- 
-      <article>
- 
-        <h3><a href="#">Blog Post Title</a></h3>
-        <h6>Written by <a href="#">John Smith</a> on August 12, 2012.</h6>
- 
-        <div class="row">
-          <div class="large-6 columns">
-            <p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa.</p>
-            <p>Boudin aliqua adipisicing rump corned beef. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami.</p>
-          </div>
-          <div class="large-6 columns">
-            <img src="http://placehold.it/400x240&text=[img]" />
-          </div>
-        </div>
- 
-        <p>Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami.</p>
- 
-        <p>Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami.</p>
- 
-      </article>
- 
     </div>
  
     <!-- End Main Content -->
  
- 
-    <!-- Sidebar -->
- 
-    <aside class="large-3 columns">
- 
-      <h5>Categories</h5>
-      <ul class="side-nav">
-        <li><a href="#">News</a></li>
-        <li><a href="#">Code</a></li>
-        <li><a href="#">Design</a></li>
-        <li><a href="#">Fun</a></li>
-        <li><a href="#">Weasels</a></li>
-      </ul>
- 
-      <div class="panel">
-        <h5>Featured</h5>
-        <p>Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow.</p>
-        <a href="#">Read More →</a>
-      </div>
- 
-    </aside>
- 
-    <!-- End Sidebar -->
   </div>
  
   <!-- End Main Content and Sidebar -->

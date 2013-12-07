@@ -1,4 +1,18 @@
 G16Boso::Application.routes.draw do
+  resources :companies do
+    collection do
+      post 'import'
+    end
+  end
+
+  resources :departments
+
+
+  resources :sessions
+
+  resources :users
+
+
   root :to => 'pages#index'
 
   resources :pages

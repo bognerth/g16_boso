@@ -1,0 +1,81 @@
+<%= link_to 'CSV', companies_path(format: "csv") %>
+| <%= link_to 'Excel', companies_path(format: "xls") %>
+| <%= link_to "Import", '#', onclick: "$('#import_form').toggle();return false;" %>
+<div id="import_form">
+    <h3>Import Betriebe</h3>
+    <%= form_tag import_companies_path, multipart: true do %>
+      <%= file_field_tag :file %>
+      <%= submit_tag "Import" %>
+    <% end %>
+</div>
+<h3>Liste der Betriebe</h3>
+
+<table>
+  <tr>
+    <th>Betrieb</th>
+    <!--
+    <th>Street</th>
+    <th>Plz</th>
+    <th>City</th>
+    <th>Phone</th>
+    <th>Fax</th>
+    <th>Email</th>
+    <th>Appellation</th>
+-->
+    <th>Bereich</th>
+    <th>Kontaktperson</th>
+<!--
+    <th>Personal phone</th>
+    <th>Personal fax</th>
+    <th>Personal email</th>
+    <th>Comment</th>
+-->
+    <th>Int.</th>
+    <th>Inf.</th>
+    <th>Coop.</th>
+    <th>Edu.</th>
+    <th>Anz.</th>
+    <th>Azu.</th>
+
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @companies.each do |company| %>
+  <tr>
+    <td><%= company.title %></td>
+<!--
+    <td><%= company.street %></td>
+    <td><%= company.plz %></td>
+    <td><%= company.city %></td>
+    <td><%= company.phone %></td>
+    <td><%= company.fax %></td>
+    <td><%= company.email %></td>
+    <td><%= company.appellation %></td>
+-->
+    <td><%= company.department.title %></td>
+
+    <td><%= company.firstname %> <%= company.lastname %></td>
+<!--
+    <td><%= company.personal_phone %></td>
+    <td><%= company.personal_fax %></td>
+    <td><%= company.personal_email %></td>
+-->
+    <td><%= company.interested %></td>
+    <td><%= company.informed %></td>
+    <td><%= company.cooperating %></td>
+    <td><%= company.educates %></td>
+    <td><%= company.places %></td>
+    <td><%= company.azubis %></td>
+    <td><%= company.comment %></td>
+    <td><%= link_to 'Show', company %></td>
+    <td><%= link_to 'Edit', edit_company_path(company) %></td>
+    <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Company', new_company_path %>

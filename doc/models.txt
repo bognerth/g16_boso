@@ -1,5 +1,8 @@
-rails g scaffold users firstname lastname course login email password_digest admin:boolean teacher:boolean student:boolean --skip-stylesheets
+rails g scaffold users firstname lastname email password_digest admin:boolean edit:boolean --skip-stylesheets
 
 courses
 lectures
 groups
+
+rails g scaffold company title street plz city phone fax email department_id:integer appellation firstname lastname personal_phone personal_fax personal_email interested:boolean informed:boolean cooperating:boolean educates:boolean places:integer azubis:integer comment:text 
+
