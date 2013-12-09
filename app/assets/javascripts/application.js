@@ -22,9 +22,9 @@
 
 $(function(){ $(document).foundation(); });
 
-$('.datatable').dataTable({
-  "sPaginationType": "foundation"
-});
+// $('.datatable').dataTable({
+//   "sPaginationType": "foundation"
+// });
 
 
 $(function() {
