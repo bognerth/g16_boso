@@ -44,11 +44,13 @@
           <section class="top-bar-section">
 
             <!-- Right Nav Section -->
-            <ul class="right">
-              <li><%= link_to 'Benutzerverwaltung', users_path %></li>
-              <li class="active"><%= link_to 'Fachbereiche', departments_path %></li>
-
-            </ul>
+            <% if current_user.edit? %>
+              <ul class="right">
+                <li><%= link_to 'Benutzerverwaltung', users_path %></li>
+                <li class="active"><%= link_to 'Fachbereiche', departments_path %></li>
+                <li><%= link_to 'Tabelle leeren', destroy_table_companies_path %><li>
+              </ul>
+            <% end %>
 
             <!-- Left Nav Section -->
             <ul class="left">
@@ -102,10 +104,9 @@
         </div>
         <div class="large-6 columns">
           <ul class="inline-list right">
-            <li><a href="#">Link 1</a></li>
-            <li><a href="#">Link 2</a></li>
-            <li><a href="#">Link 3</a></li>
-            <li><a href="#">Link 4</a></li>
+            <li><a href="http://www.g16hh.de/">G16 Farmsen</a></li>
+            <li><a href="http://141.91.210.14/">G16 Moodle</a></li>
+            <li><a href="https://www2.wibes.de">Wibes</a></li>
           </ul>
         </div>
       </div>

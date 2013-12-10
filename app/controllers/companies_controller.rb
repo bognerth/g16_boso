@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
 
-  before_filter :authorize, except: [:index, :show]
+  before_filter :authorize #, except: [:index, :show]
   
   def index
     @companies = Company.order(:title)
@@ -16,6 +16,11 @@ class CompaniesController < ApplicationController
   def import
     Company.import(params[:file])
     redirect_to root_url, notice: "Datei importiert."
+  end
+
+  def destroy_table
+    Company.delete_all
+    redirect_to root_url, notice: "Tabelle Betriebe wurde geleert."
   end
 
   def show

@@ -6,6 +6,7 @@ G16Boso::Application.routes.draw do
   resources :companies do
     collection do
       post 'import'
+      get 'destroy_table'
     end
   end
 
@@ -17,7 +18,7 @@ G16Boso::Application.routes.draw do
   resources :users
 
 
-  root :to => 'pages#index'
+  root :to => 'companies#index'
 
   resources :pages
 
