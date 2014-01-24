@@ -48,7 +48,7 @@
               <ul class="right">
                 <li><%= link_to 'Benutzerverwaltung', users_path %></li>
                 <li class="active"><%= link_to 'Fachbereiche', departments_path %></li>
-                <li><%= link_to 'Tabelle leeren', destroy_table_companies_path %><li>
+                <li><%= link_to 'Tabelle leeren', destroy_table_companies_path, data: { confirm: 'Sollen ale Betriebe geloescht werden?' } %><li>
               </ul>
             <% end %>
 
@@ -59,7 +59,11 @@
               <li class="has-dropdown">
                 <a href="#">Filter</a>
                 <ul class="dropdown">
-                  <li><a href="#">Filter</a></li>
+                  <li><%= link_to "Informiert", companies_path(:filter => 'informed') %></li>
+                  <li><%= link_to "Interessiert", companies_path(:filter => 'interested') %></li>
+                  <li><%= link_to "Nicht inter.", companies_path(:filter => 'not_interested') %></li>
+                  <li><%= link_to "Kooperiert", companies_path(:filter => 'cooperating') %></li>
+                  <li><%= link_to "Bildet aus", companies_path(:filter => 'educates') %></li>
                 </ul>
               </li>
             </ul>

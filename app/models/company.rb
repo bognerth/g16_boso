@@ -1,5 +1,5 @@
 class Company < ActiveRecord::Base
-  attr_accessible :position, :appellation, :azubis, :city, :comment, :cooperating, :department_id, :educates, :email, :fax, :firstname, :informed, :interested, :lastname, :personal_email, :personal_fax, :personal_phone, :phone, :places, :plz, :street, :title
+  attr_accessible :position, :appellation, :azubis, :city, :comment, :cooperating, :department_id, :educates, :email, :fax, :firstname, :informed, :not_interested, :interested, :lastname, :personal_email, :personal_fax, :personal_phone, :phone, :places, :plz, :street, :title
 
   belongs_to :department
 
@@ -14,11 +14,10 @@ class Company < ActiveRecord::Base
 
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
-      product = find_by_id(row["id"]) || new
+      company = find_by_id(row["id"]) || new
       #raise row.to_hash.slice(*accessible_attributes).to_yaml
-      product.attributes = row.to_hash.slice(*accessible_attributes)
-
-      product.save!
+      company.attributes = row.to_hash.slice(*accessible_attributes)
+      company.save!
     end
   end
   

@@ -3,8 +3,11 @@ class CompaniesController < ApplicationController
   before_filter :authorize #, except: [:index, :show]
   
   def index
-    @companies = Company.order(:title)
-
+    if params[:filter]
+      @companies = Company.where(params[:filter].to_sym => true)
+    else
+      @companies = Company.order(:title)
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @companies }

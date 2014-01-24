@@ -4,7 +4,7 @@
         <div class="row">
           <div class="small-12 columns">
             <div data-alert class="alert-box info radius">
-              <h3>Für eine Anmeldung müssen folgende Felder korrekt ausgefüllt werden:</h3>
+              <h3>Folgende Felder müssen ausgefüllt werden:</h3>
               <ul style='padding-left:30px;'>
               <% @company.errors.full_messages.each do |msg| %>
                 <li><%= msg %></li>
@@ -121,6 +121,9 @@
             <%= f.check_box :interested %> Interessiert  
           </div>
           <div class="small-3 columns"> 
+            <%= f.check_box :not_interested %> Nicht interessiert  
+          </div>
+          <div class="small-3 columns"> 
             <%= f.check_box :informed %> Informiert  
           </div>
           <div class="small-3 columns"> 
@@ -150,7 +153,7 @@
       <div class="row">
         <div class="small-12">
           Kommentar<br />
-          <%= f.text_area :comment %>
+          <%= f.text_area :comment, :style => "height: 100%" %>
         </div>
       </div>
     </div>

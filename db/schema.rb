@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131205152342) do
+ActiveRecord::Schema.define(:version => 20140124110310) do
 
   create_table "companies", :force => true do |t|
     t.string   "title"
@@ -29,10 +29,11 @@ ActiveRecord::Schema.define(:version => 20131205152342) do
     t.string   "personal_fax"
     t.string   "personal_email"
     t.string   "position"
-    t.boolean  "interested"
-    t.boolean  "informed"
-    t.boolean  "cooperating"
-    t.boolean  "educates"
+    t.boolean  "interested", :default => false
+    t.boolean  "not_interested", :default => false
+    t.boolean  "informed", :default => false
+    t.boolean  "cooperating", :default => false
+    t.boolean  "educates", :default => true
     t.integer  "places"
     t.integer  "azubis"
     t.text     "comment"
