@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 class Company < ActiveRecord::Base
   attr_accessible :position, :appellation, :azubis, :city, :comment, :cooperating, :department_id, :educates, :email, :fax, :firstname, :informed, :not_interested, :interested, :lastname, :personal_email, :personal_fax, :personal_phone, :phone, :places, :plz, :street, :title
 

@@ -38,8 +38,16 @@ class CompaniesController < ApplicationController
   # GET /companies/new
   # GET /companies/new.json
   def new
-    @company = Company.new
-
+    if params[:company_id]
+      company_hash = {}
+      c = Company.where(id: params[:company_id]).first
+      Company.accessible_attributes.each do |att|
+        company_hash[att] = c[att.to_sym] unless att.empty?
+      end
+      @company = Company.new(company_hash)
+    else
+      @company = Company.new
+    end
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @company }
@@ -58,7 +66,7 @@ class CompaniesController < ApplicationController
 
     respond_to do |format|
       if @company.save
-        format.html { redirect_to @company, notice: 'Company was successfully created.' }
+        format.html { redirect_to companies_url, notice: 'Company was successfully created.' }
         format.json { render json: @company, status: :created, location: @company }
       else
         format.html { render action: "new" }
@@ -74,7 +82,7 @@ class CompaniesController < ApplicationController
 
     respond_to do |format|
       if @company.update_attributes(params[:company])
-        format.html { redirect_to @company, notice: 'Company was successfully updated.' }
+        format.html { redirect_to companies_url, notice: 'Company was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
