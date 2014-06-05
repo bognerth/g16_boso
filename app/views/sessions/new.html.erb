@@ -1,15 +1,17 @@
+<%#= default_adauth_form %>
+
 <div row>
   <div class="small-7 small-centered columns">
 <fieldset>
   <legend>Log In</legend>
 
-<%= form_tag sessions_path do %>
+<%= form_tag "/adauth" do %>
   <div class="row collapse">
     <div class="small-4 columns">
-      <span class="prefix">Email</span>
+      <span class="prefix">Login</span>
     </div>
     <div class="small-8 columns">
-      <%= email_field_tag :email, params[:email] %>
+      <%= text_field_tag :username, params[:username] %>
     </div>
   </div>
 

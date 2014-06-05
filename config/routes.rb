@@ -1,5 +1,9 @@
 G16Boso::Application.routes.draw do
   
+  match "/signout" => "sessions#destroy"
+
+  match "/adauth" => "sessions#create"
+
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 

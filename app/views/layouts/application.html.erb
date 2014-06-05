@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
-<!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+<html>
   <head>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
+      <script src="//s3.amazonaws.com/nwapi/nwmatcher/nwmatcher-1.2.5-min.js"></script>
+      <script src="//html5base.googlecode.com/svn-history/r38/trunk/js/selectivizr-1.0.3b.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.1.0/respond.min.js"></script>
+    <![endif]-->
   	<meta charset="utf-8" />
 
   	<!-- Uncomment to make IE8 render like IE7 -->
@@ -116,10 +118,10 @@
       </div>
     </div>
   </footer>
-    
-    
-    
+     
     
     <%= javascript_include_tag "application" %>
+    <script src="https://github.com/chuckcarpenter/REM-unit-polyfill"></script>
+    <%#= javascript_link_tag "https://github.com/chuckcarpenter/REM-unit-polyfill" %>
   </body>
 </html>

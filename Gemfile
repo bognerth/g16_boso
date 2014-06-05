@@ -25,6 +25,9 @@ group :development do
   gem 'capistrano', '~> 2.14'
 end
 
+gem 'net-ldap', :git => "git://github.com/ruby-ldap/ruby-net-ldap.git", :branch => "master"
+gem 'adauth'
+
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'

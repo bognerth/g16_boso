@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140124110310) do
+ActiveRecord::Schema.define(:version => 20140603105200) do
 
   create_table "companies", :force => true do |t|
     t.string   "title"
@@ -29,16 +29,16 @@ ActiveRecord::Schema.define(:version => 20140124110310) do
     t.string   "personal_fax"
     t.string   "personal_email"
     t.string   "position"
-    t.boolean  "interested", :default => false
-    t.boolean  "not_interested", :default => false
-    t.boolean  "informed", :default => false
-    t.boolean  "cooperating", :default => false
-    t.boolean  "educates", :default => true
+    t.boolean  "interested"
+    t.boolean  "informed"
+    t.boolean  "cooperating"
+    t.boolean  "educates"
     t.integer  "places"
     t.integer  "azubis"
     t.text     "comment"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.boolean  "not_interested"
   end
 
   create_table "departments", :force => true do |t|
@@ -58,11 +58,12 @@ ActiveRecord::Schema.define(:version => 20140124110310) do
     t.string   "firstname"
     t.string   "lastname"
     t.string   "email"
-    t.string   "password_digest"
     t.boolean  "admin"
     t.boolean  "edit"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "login"
+    t.string   "group_strings"
   end
 
 end

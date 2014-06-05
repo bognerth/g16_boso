@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>Login</th>
     <th>Firstname</th>
     <th>Lastname</th>
     <th>Email</th>
@@ -14,6 +15,7 @@
 
 <% @users.each do |user| %>
   <tr>
+    <td><%= user.login %></td>
     <td><%= user.firstname %></td>
     <td><%= user.lastname %></td>
     <td><%= user.email %></td>

@@ -1,22 +1,21 @@
 class SessionsController < ApplicationController
-  def new
-  end
+	def new
+		redirect_to root_path if current_user
+	end
 
-  def create 
-    #raise User.authenticate_at_ad(params[:login],params[:password]).to_yaml
-    @user = User.find_by_email(params[:email])
-    if @user && @user.authenticate(params[:password]) 
-        session[:user_id] = @user.id
-        redirect_to root_url, notice: "Logged in!"
-    else
-      flash.now.alert = "Authentifizierung fehlgeschlagen."
-      render "new"  
-    end
+	def create
+		ldap_user = Adauth.authenticate(params[:username], params[:password])
+		if ldap_user
+        	user = User.return_and_create_from_adauth(ldap_user)
+        	session[:user_id] = user.id
+        	redirect_to root_path
+    	else
+        	redirect_to root_path, :error => "Invalid Login"
+    	end
+	end
 
-  end
-
-  def destroy
-    session[:user_id] = nil
-    redirect_to root_url, notice: "Logged out!"
-  end
+	def destroy
+		session[:user_id] = nil
+		redirect_to root_path
+	end
 end
