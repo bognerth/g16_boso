@@ -1,18 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!--[if lt IE 9]>
-      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
-      <script src="//s3.amazonaws.com/nwapi/nwmatcher/nwmatcher-1.2.5-min.js"></script>
-      <script src="//html5base.googlecode.com/svn-history/r38/trunk/js/selectivizr-1.0.3b.js"></script>
-      <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.1.0/respond.min.js"></script>
-    <![endif]-->
   	<meta charset="utf-8" />
 
-  	<!-- Uncomment to make IE8 render like IE7 -->
-  	<!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
-
-  	<!-- Set the viewport width to device width for mobile -->
   	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   	<title><%= content_for?(:title) ? yield(:title) : "G16 - Höhere Technikschule" %></title>
@@ -121,7 +111,6 @@
      
     
     <%= javascript_include_tag "application" %>
-    <script src="https://github.com/chuckcarpenter/REM-unit-polyfill"></script>
-    <%#= javascript_link_tag "https://github.com/chuckcarpenter/REM-unit-polyfill" %>
+    
   </body>
 </html>
