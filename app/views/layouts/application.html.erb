@@ -27,7 +27,7 @@
       <h1><%= image_tag('g16_logo-green.png', :size => '280x100', title: "Höhere Technikschule - G16 Farmsen") %>
         <small>Höhere Technikschule</small>
       </h1>
-      <% unless current_user %>
+      <% unless current_user && current_user.edit? %>
         <hr />
       <% else %>
         <nav class="top-bar" data-topbar>
@@ -36,29 +36,31 @@
           <section class="top-bar-section">
 
             <!-- Right Nav Section -->
-            <% if current_user.edit? %>
+      
               <ul class="right">
                 <li><%= link_to 'Benutzerverwaltung', users_path %></li>
                 <li class="active"><%= link_to 'Fachbereiche', departments_path %></li>
                 <li><%= link_to 'Tabelle leeren', destroy_table_companies_path, data: { confirm: 'Sollen ale Betriebe geloescht werden?' } %><li>
               </ul>
-            <% end %>
+            
 
             <!-- Left Nav Section -->
-            <ul class="left">
-              <li><%= link_to "Neuen Betrieb", new_company_path %></li>
-              <li><%= link_to "Alle Betriebe", companies_path %></li>
-              <li class="has-dropdown">
-                <a href="#">Filter</a>
-                <ul class="dropdown">
-                  <li><%= link_to "Informiert", companies_path(:filter => 'informed') %></li>
-                  <li><%= link_to "Interessiert", companies_path(:filter => 'interested') %></li>
-                  <li><%= link_to "Nicht inter.", companies_path(:filter => 'not_interested') %></li>
-                  <li><%= link_to "Kooperiert", companies_path(:filter => 'cooperating') %></li>
-                  <li><%= link_to "Bildet aus", companies_path(:filter => 'educates') %></li>
-                </ul>
-              </li>
-            </ul>
+              <ul class="left">
+                <li><%= link_to "Neuen Betrieb", new_company_path %></li>
+                <li><%= link_to "Alle Betriebe", companies_path %></li>
+                <li class="has-dropdown">
+                  <a href="#">Filter</a>
+                  <ul class="dropdown">
+                    <li><%= link_to "Informiert", companies_path(:filter => 'informed') %></li>
+                    <li><%= link_to "Interessiert", companies_path(:filter => 'interested') %></li>
+                    <li><%= link_to "Nicht inter.", companies_path(:filter => 'not_interested') %></li>
+                    <li><%= link_to "Kooperiert", companies_path(:filter => 'cooperating') %></li>
+                    <li><%= link_to "Bildet aus", companies_path(:filter => 'educates') %></li>
+                  </ul>
+                </li>
+              </ul>
+
+   
           </section>
         </nav>
       <% end %>

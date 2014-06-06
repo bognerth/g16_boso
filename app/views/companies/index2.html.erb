@@ -1,0 +1,30 @@
+<h3>Liste der Betriebe</h3>
+
+<table class="datatable">
+  <thead>
+    <tr>
+      <th>Betrieb</th>
+      <th>Kategorie</th>
+      <th>Ausbilder</th>
+      <th>PLZ</th>
+      <th>Stadt</th>
+      <th>Straße</th>
+      <th>Telefon</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @companies.each do |company| %>
+      <tr>
+        <td><%= company.title %></td>
+        <td><%= best_in_place company, :department_id,:type => :select, :collection => Department.find(:all).collect{|d| [d.id,d.title]} %></td>
+        <td><%= company.firstname %> <%= company.lastname %></td>
+        <td><%= company.plz %></td>
+        <td><%= company.city %></td>
+        <td><%= company.street %></td>
+        <td><%= company.phone %></td>
+        <td><%= company.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

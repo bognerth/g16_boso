@@ -3,16 +3,21 @@ class CompaniesController < ApplicationController
   before_filter :authorize #, except: [:index, :show]
   
   def index
-    if params[:filter]
-      @companies = Company.where(params[:filter].to_sym => true)
+    if @current_user.edit?
+      if params[:filter]
+        @companies = Company.where(params[:filter].to_sym => true)
+      else
+        @companies = Company.order(:title)
+      end
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @companies }
+        format.csv { render text: @companies.to_csv }
+        format.xls
+      end
     else
-      @companies = Company.order(:title)
-    end
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @companies }
-      format.csv { render text: @companies.to_csv }
-      format.xls
+      @companies = Company.where(:interested => true)
+      render "index2"
     end
   end
 
